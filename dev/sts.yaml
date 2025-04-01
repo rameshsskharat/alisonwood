@@ -25,13 +25,4 @@ spec:
           volumeMounts:
             - name: www
               mountPath: /var/lib/mysql
-  volumeClaimTemplates:
-    - metadata:
-        name: www
-      spec:
-        accessModes:
-          - ReadWriteOnce
-        storageClassName: ibmc-block-gold
-        resources:
-          requests:
-            storage: 20G
+
