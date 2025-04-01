@@ -22,7 +22,3 @@ spec:
           env:
           - name: MYSQL_ROOT_PASSWORD
             value: "123"
-          volumeMounts:
-            - name: www
-              mountPath: /var/lib/mysql
-
