@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: webdeploy
+  name: webdeploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webdeploy
+  template:
+    metadata:
+      labels:
+        app: webdeploy
+    spec:
+      imagePullSecrets:
+      - name: dockerhubsecret1
+      containers:
+        - image: docker.io/aliwoodie/natwest1:webv1.0
+        name: webdeploy

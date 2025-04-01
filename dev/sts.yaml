@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: db-deploy
+  namespace: alison
+spec:
+  serviceName: s1
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      imagePullSecrets:
+      - name: dockerhubsecret1
+      containers:
+        - name: c1
+          image: docker.io/aliwoodie/natwest1:dbv1.0
+          env:
+          - name: MYSQL_ROOT_PASSWORD
+            value: "123"
+          volumeMounts:
+            - name: www
+              mountPath: /var/lib/mysql
+  volumeClaimTemplates:
+    - metadata:
+        name: www
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        storageClassName: ibmc-block-gold
+        resources:
+          requests:
+            storage: 20G
