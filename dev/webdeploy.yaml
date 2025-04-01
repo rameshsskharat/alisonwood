@@ -3,20 +3,21 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    app: webdeploy
-  name: webdeploy
+    app: web
+  name: web
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: webdeploy
+      app: web
   template:
     metadata:
       labels:
-        app: webdeploy
+        app: web
     spec:
       imagePullSecrets:
       - name: dockerhubsecret1
       containers:
         - image: docker.io/aliwoodie/natwest1:webv1.0
-        name: webdeploy
+        name: web
+
