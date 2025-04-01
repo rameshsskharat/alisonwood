@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: dosa2
+  name: biryani
+  namespace: alison
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: biryani
+  type: NodePort
+status:
+  loadBalancer: {}
